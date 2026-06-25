@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daily PM</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#day-1" aria-label="Product Management Fieldbook home">
+          <span class="brand-mark">PM</span>
+          <span>
+            <strong>Daily PM</strong>
+            <small>Daily lessons, tips and exercises for product management</small>
+          </span>
+        </a>
+
+        <nav class="tabs" aria-label="Main navigation">
+          <button class="tab is-active" data-route="course" type="button">Course</button>
+          <button class="tab" data-route="about" type="button">About</button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="course-view" id="courseView">
+          <aside class="day-rail" aria-label="Course days">
+            <section class="progress-card" aria-label="Your progress">
+              <div>
+                <span class="progress-kicker">My Progress</span>
+                <strong id="completedCount">0 / 0 days</strong>
+              </div>
+              <div class="completion-ring" aria-hidden="true">
+                <span id="completionPercent">0%</span>
+              </div>
+              <div class="mini-stats">
+                <span>
+                  <strong id="startedCount">0</strong>
+                  Started
+                </span>
+                <span>
+                  <strong id="lastActivity">Not yet</strong>
+                  Last activity
+                </span>
+              </div>
+              <button class="text-button" id="resetProgress" type="button">Reset progress</button>
+            </section>
+
+            <div class="rail-heading">
+              <span>Curriculum</span>
+              <strong id="dayCount">0 days</strong>
+            </div>
+            <div class="day-list" id="dayList"></div>
+          </aside>
+
+          <article class="reader">
+            <div class="reader-toolbar">
+              <button class="icon-button" id="prevDay" type="button" aria-label="Previous day" title="Previous day">
+                <span aria-hidden="true">←</span>
+              </button>
+              <div class="progress-block" aria-label="Course progress">
+                <span id="currentDayLabel">Day 1</span>
+                <div class="progress-track">
+                  <span id="progressFill"></span>
+                </div>
+              </div>
+              <button class="icon-button" id="nextDay" type="button" aria-label="Next day" title="Next day">
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <section class="lesson-actions" aria-label="Lesson tracking">
+              <div>
+                <span class="tracking-label" id="lessonStatus">Not started</span>
+                <strong id="lessonTrackingText">Open this lesson to start tracking.</strong>
+              </div>
+              <button class="complete-button" id="completeDay" type="button">Mark complete</button>
+            </section>
+
+            <div class="content-status" id="contentStatus">Loading lesson...</div>
+            <div class="markdown-body" id="content"></div>
+
+            <section class="notes-panel" aria-label="Private lesson note">
+              <label for="lessonNote">Private note for this day</label>
+              <textarea id="lessonNote" rows="4" placeholder="Write one insight, question, or action you want to remember."></textarea>
+              <span id="noteSaved">Saved locally in this browser</span>
+            </section>
+          </article>
+        </section>
+
+        <section class="about-view" id="aboutView" hidden>
+          <article class="reader about-reader">
+            <section class="about-profile" aria-label="Profile summary">
+              <div class="profile-photo-wrap">
+                <img id="profilePhoto" src="assets/profile.svg" alt="Portrait of Alireza Sadeghi-Nasab">
+                <span class="profile-photo-fallback" aria-hidden="true">AS</span>
+              </div>
+              <div class="profile-copy">
+                <span class="profile-kicker">About Me</span>
+                <h1 id="profileName">Alireza Sadeghi-Nasab</h1>
+                <p id="profileTitle">Product Manager</p>
+                <p class="profile-location" id="profileLocation">Tehran, Iran</p>
+              </div>
+            </section>
+
+            <section class="contact-panel" aria-label="Contact links">
+              <div class="contact-heading">
+                <span>Contacts</span>
+                <strong>Find me online</strong>
+              </div>
+              <div class="contact-grid" id="contactGrid"></div>
+            </section>
+
+            <div class="content-status" id="aboutStatus">Loading profile...</div>
+            <div class="markdown-body" id="aboutContent"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
