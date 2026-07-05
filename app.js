@@ -16,6 +16,30 @@ const course = [
     title: "Product Development Lifecycle",
     duration: "35 min",
     file: "content/days/day-3.md"
+  },
+  {
+    day: 4,
+    title: "Types of Products",
+    duration: "30 min",
+    file: "content/days/day-4.md"
+  },
+  {
+    day: 5,
+    title: "Product Thinking vs Feature Thinking",
+    duration: "35 min",
+    file: "content/days/day-5.md"
+  },
+  {
+    day: 6,
+    title: "Understanding Business Model",
+    duration: "40 min",
+    file: "content/days/day-6.md"
+  },
+  {
+    day: 7,
+    title: "Product Strategy Fundamentals",
+    duration: "35 min",
+    file: "content/days/day-7.md"
   }
 ];
 
@@ -34,7 +58,7 @@ const aboutProfile = {
     { id: "instagram", label: "Instagram", value: "@_.alireza._sn", href: "https://www.instagram.com/_.alireza._sn/" },
     { id: "github", label: "GitHub", value: "@AlirezaSN", href: "https://github.com/AlirezaSN/" },
     { id: "telegram", label: "Telegram", value: "@alireza_sn", href: "https://t.me/alireza_sn" },
-    { id: "scholar", label: "Google Scholar", value: "Scholar", href: "https://scholar.google.com/citations?user=w6jQ-tQAAAAJ&hl=en" }
+    { id: "scholar", label: "Google Scholar", value: "👨🏻‍🎓", href: "https://scholar.google.com/citations?user=w6jQ-tQAAAAJ&hl=en" }
   ]
 };
 const progressKey = "pm-course-progress";
