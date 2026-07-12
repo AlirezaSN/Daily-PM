@@ -40,6 +40,24 @@ const course = [
     title: "Product Strategy Fundamentals",
     duration: "35 min",
     file: "content/days/day-7.md"
+  },
+  {
+    day: 8,
+    title: "Customer-Centric Product Development",
+    duration: "35 min",
+    file: "content/days/day-8.md"
+  },
+  {
+    day: 9,
+    title: "User Research Fundamentals",
+    duration: "40 min",
+    file: "content/days/day-9.md"
+  },
+  {
+    day: 10,
+    title: "Customer Interviews",
+    duration: "45 min",
+    file: "content/days/day-10.md"
   }
 ];
 
