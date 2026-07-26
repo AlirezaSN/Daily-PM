@@ -58,6 +58,48 @@ const course = [
     title: "Customer Interviews",
     duration: "45 min",
     file: "content/days/day-10.md"
+  },
+  {
+    day: 11,
+    title: "Surveys & Quantitative Research",
+    duration: "45 min",
+    file: "content/days/day-11.md"
+  },
+  {
+    day: 12,
+    title: "Personas & Customer Segmentation",
+    duration: "40 min",
+    file: "content/days/day-12.md"
+  },
+  {
+    day: 13,
+    title: "Customer Journey Mapping",
+    duration: "50 min",
+    file: "content/days/day-13.md"
+  },
+  {
+    day: 14,
+    title: "Jobs To Be Done (JTBD)",
+    duration: "35 min",
+    file: "content/days/day-14.md"
+  },
+  {
+    day: 15,
+    title: "Product Discovery Process",
+    duration: "45 min",
+    file: "content/days/day-15.md"
+  },
+  {
+    day: 16,
+    title: "Problem Discovery & Validation",
+    duration: "50 min",
+    file: "content/days/day-16.md"
+  },
+  {
+    day: 17,
+    title: "Solution Discovery & Ideation",
+    duration: "55 min",
+    file: "content/days/day-17.md"
   }
 ];
 
