@@ -100,6 +100,48 @@ const course = [
     title: "Solution Discovery & Ideation",
     duration: "55 min",
     file: "content/days/day-17.md"
+  },
+  {
+    day: 18,
+    title: "Prototyping & Experimentation",
+    duration: "60 min",
+    file: "content/days/day-18.md"
+  },
+  {
+    day: 19,
+    title: "Minimum Viable Product (MVP)",
+    duration: "55 min",
+    file: "content/days/day-19.md"
+  },
+  {
+    day: 20,
+    title: "Product Metrics & Analytics",
+    duration: "45 min",
+    file: "content/days/day-20.md"
+  },
+  {
+    day: 21,
+    title: "Product Analytics Deep Dive",
+    duration: "40 min",
+    file: "content/days/day-21.md"
+  },
+  {
+    day: 22,
+    title: "Experimentation & A/B Testing",
+    duration: "55 min",
+    file: "content/days/day-22.md"
+  },
+  {
+    day: 23,
+    title: "Product Strategy Fundamentals",
+    duration: "60 min",
+    file: "content/days/day-23.md"
+  },
+  {
+    day: 24,
+    title: "Product Vision & Mission",
+    duration: "65 min",
+    file: "content/days/day-24.md"
   }
 ];
 
