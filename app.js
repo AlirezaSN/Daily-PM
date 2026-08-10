@@ -142,6 +142,42 @@ const course = [
     title: "Product Vision & Mission",
     duration: "65 min",
     file: "content/days/day-24.md"
+  },
+  {
+    day: 25,
+    title: "Product Goals & OKRs",
+    duration: "60 min",
+    file: "content/days/day-25.md"
+  },
+  {
+    day: 26,
+    title: "Prioritization Frameworks",
+    duration: "70 min",
+    file: "content/days/day-26.md"
+  },
+  {
+    day: 27,
+    title: "Product Roadmapping",
+    duration: "65 min",
+    file: "content/days/day-27.md"
+  },
+  {
+    day: 28,
+    title: "Stakeholder Management",
+    duration: "60 min",
+    file: "content/days/day-28.md"
+  },
+  {
+    day: 29,
+    title: "Product Communication & Storytelling",
+    duration: "65 min",
+    file: "content/days/day-29.md"
+  },
+  {
+    day: 30,
+    title: "Product Discovery",
+    duration: "70 min",
+    file: "content/days/day-30.md"
   }
 ];
 
