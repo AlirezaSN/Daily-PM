@@ -17,10 +17,18 @@
           </span>
         </a>
 
-        <nav class="tabs" aria-label="Main navigation">
-          <button class="tab is-active" data-route="course" type="button">Course</button>
-          <button class="tab" data-route="about" type="button">About</button>
-        </nav>
+        <div class="topbar-actions">
+          <nav class="tabs" aria-label="Main navigation">
+            <button class="tab is-active" data-route="course" type="button">Course</button>
+            <button class="tab" data-route="interviews" type="button">Interview Practice</button>
+            <button class="tab" data-route="about" type="button">About</button>
+          </nav>
+
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+            <span class="theme-icon theme-sun" aria-hidden="true">☀</span>
+            <span class="theme-icon theme-moon" aria-hidden="true">☾</span>
+          </button>
+        </div>
       </header>
 
       <main>
@@ -85,6 +93,37 @@
               <label for="lessonNote">Private note for this day</label>
               <textarea id="lessonNote" rows="4" placeholder="Write one insight, question, or action you want to remember."></textarea>
               <span id="noteSaved">Saved locally in this browser</span>
+            </section>
+          </article>
+        </section>
+
+        <section class="interview-view" id="interviewView" hidden>
+          <aside class="interview-rail" aria-label="Interview questions">
+            <section class="interview-filter-panel" aria-label="Question filters">
+              <div class="rail-heading">
+                <span>Practice</span>
+                <strong id="questionCount">0 questions</strong>
+              </div>
+              <div class="tag-filter-list" id="tagFilterList"></div>
+            </section>
+            <div class="question-list" id="questionList"></div>
+          </aside>
+
+          <article class="reader interview-reader">
+            <div class="interview-header">
+              <div>
+                <span class="tracking-label" id="activeQuestionTags">Interview question</span>
+                <h1 id="activeQuestionTitle">Select a question</h1>
+              </div>
+            </div>
+
+            <div class="content-status" id="interviewStatus">Loading question...</div>
+            <div class="markdown-body" id="interviewContent"></div>
+
+            <section class="notes-panel" aria-label="Private interview comment">
+              <label for="interviewComment">Private comment for this question</label>
+              <textarea id="interviewComment" rows="4" placeholder="Write your draft answer, examples, gaps, or feedback notes."></textarea>
+              <span id="interviewCommentSaved">Saved locally in this browser</span>
             </section>
           </article>
         </section>

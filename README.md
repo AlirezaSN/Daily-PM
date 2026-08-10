@@ -45,3 +45,10 @@ This site has no build step and no backend. Upload the whole folder to any stati
 - Put your profile photo at `assets/profile.svg`. If that file is missing, the page shows an initials fallback.
 - Edit `aboutProfile` near the top of `app.js` to change your title, location, and contact links.
 - The long About description still comes from `content/about.md`.
+
+## Theme And Interview Practice
+
+- The site now includes a light/dark theme switch. The selected theme is saved in `localStorage` under `pm-course-theme`.
+- Interview practice content lives in `content/interviews/`. Add new Markdown files there and register them in the `interviewQuestions` array in `app.js`.
+- Interview comments are local-only and saved in the learner's browser under `pm-interview-comments`.
+- Markdown rendering now supports horizontal rules, fenced code blocks, and GitHub-style tables.

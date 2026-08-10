@@ -181,7 +181,6 @@ const course = [
   }
 ];
 
-const aboutFile = "content/about.md";
 const aboutProfile = {
   name: "Alireza Sadeghi-Nasab",
   title: "Product Manager | PhD in Software Engineering",
@@ -199,11 +198,30 @@ const aboutProfile = {
     { id: "scholar", label: "Google Scholar", value: "👨🏻‍🎓", href: "https://scholar.google.com/citations?user=w6jQ-tQAAAAJ&hl=en" }
   ]
 };
+
+const aboutFile = "content/about.md";
 const progressKey = "pm-course-progress";
+const themeKey = "pm-course-theme";
+const interviewCommentKey = "pm-interview-comments";
+const interviewQuestions = [
+  { id: "q1", title: "Tell me about a product you improved", tags: ["behavioral", "execution"], file: "content/interviews/question-1.md" },
+  { id: "q2", title: "How do you prioritize features?", tags: ["prioritization", "strategy"], file: "content/interviews/question-2.md" },
+  { id: "q3", title: "Explain an API to a non-technical stakeholder", tags: ["technical", "communication"], file: "content/interviews/question-3.md" },
+  { id: "q4", title: "How would you improve activation for a fintech app?", tags: ["analytics", "product-sense"], file: "content/interviews/question-4.md" },
+  { id: "q5", title: "Tell me about a conflict with engineering or design", tags: ["behavioral", "stakeholder"], file: "content/interviews/question-5.md" },
+  { id: "q6", title: "What metrics would you track after launching a feature?", tags: ["analytics", "execution"], file: "content/interviews/question-6.md" },
+  { id: "q7", title: "How would you decide whether to build, buy, or partner?", tags: ["strategy", "technical"], file: "content/interviews/question-7.md" },
+  { id: "q8", title: "Design a product for freelancers to manage invoices", tags: ["product-sense", "design"], file: "content/interviews/question-8.md" }
+];
+
 const state = {
   selectedIndex: Number(localStorage.getItem("pm-course-day") || 0),
   route: "course",
-  progress: loadProgress()
+  progress: loadProgress(),
+  theme: getInitialTheme(),
+  selectedTag: "all",
+  selectedQuestionId: interviewQuestions[0].id,
+  interviewComments: loadInterviewComments()
 };
 
 const dayList = document.querySelector("#dayList");
@@ -217,6 +235,7 @@ const progressFill = document.querySelector("#progressFill");
 const prevDay = document.querySelector("#prevDay");
 const nextDay = document.querySelector("#nextDay");
 const courseView = document.querySelector("#courseView");
+const interviewView = document.querySelector("#interviewView");
 const aboutView = document.querySelector("#aboutView");
 const tabs = document.querySelectorAll(".tab");
 const completedCount = document.querySelector("#completedCount");
@@ -234,6 +253,34 @@ const profileName = document.querySelector("#profileName");
 const profileTitle = document.querySelector("#profileTitle");
 const profileLocation = document.querySelector("#profileLocation");
 const contactGrid = document.querySelector("#contactGrid");
+const themeToggle = document.querySelector("#themeToggle");
+const tagFilterList = document.querySelector("#tagFilterList");
+const questionList = document.querySelector("#questionList");
+const questionCount = document.querySelector("#questionCount");
+const activeQuestionTitle = document.querySelector("#activeQuestionTitle");
+const activeQuestionTags = document.querySelector("#activeQuestionTags");
+const interviewStatus = document.querySelector("#interviewStatus");
+const interviewContent = document.querySelector("#interviewContent");
+const interviewComment = document.querySelector("#interviewComment");
+const interviewCommentSaved = document.querySelector("#interviewCommentSaved");
+
+function getInitialTheme() {
+  const saved = localStorage.getItem(themeKey);
+  if (saved === "dark" || saved === "light") return saved;
+  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function applyTheme() {
+  document.documentElement.dataset.theme = state.theme;
+  themeToggle.setAttribute("aria-label", state.theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  themeToggle.title = state.theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+}
+
+function toggleTheme() {
+  state.theme = state.theme === "dark" ? "light" : "dark";
+  localStorage.setItem(themeKey, state.theme);
+  applyTheme();
+}
 
 function loadProgress() {
   try {
@@ -249,6 +296,20 @@ function saveProgress() {
   localStorage.setItem(progressKey, JSON.stringify(state.progress));
 }
 
+function loadInterviewComments() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(interviewCommentKey));
+    if (saved && typeof saved === "object") return saved;
+  } catch (error) {
+    console.warn("Interview comments could not be read.", error);
+  }
+  return {};
+}
+
+function saveInterviewComments() {
+  localStorage.setItem(interviewCommentKey, JSON.stringify(state.interviewComments));
+}
+
 function getDayKey(index = state.selectedIndex) {
   return `day-${course[index].day}`;
 }
@@ -256,12 +317,7 @@ function getDayKey(index = state.selectedIndex) {
 function getDayProgress(index = state.selectedIndex) {
   const key = getDayKey(index);
   if (!state.progress.days[key]) {
-    state.progress.days[key] = {
-      openedAt: "",
-      lastOpenedAt: "",
-      completedAt: "",
-      note: ""
-    };
+    state.progress.days[key] = { openedAt: "", lastOpenedAt: "", completedAt: "", note: "" };
   }
   return state.progress.days[key];
 }
@@ -273,12 +329,7 @@ function formatDate(value) {
 
 function formatDateTime(value) {
   if (!value) return "";
-  return new Intl.DateTimeFormat(undefined, {
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit"
-  }).format(new Date(value));
+  return new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(value));
 }
 
 function escapeHtml(value) {
@@ -292,10 +343,168 @@ function escapeHtml(value) {
 
 function inlineMarkdown(value) {
   return escapeHtml(value)
+    .replace(/`([^`]+?)`/g, "<code>$1</code>")
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    .replace(/`(.+?)`/g, "<code>$1</code>")
     .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+|mailto:[^)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>');
+}
+
+function splitTableRow(line) {
+  return line.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
+}
+
+function isTableSeparator(line) {
+  return /^\|?\s*:?-{3,}:?(\s*\|\s*:?-{3,}:?)+\s*\|?\s*$/.test(line);
+}
+
+function renderTable(headers, rows) {
+  const head = headers.map((cell) => `<th>${inlineMarkdown(cell)}</th>`).join("");
+  const body = rows
+    .map((row) => `<tr>${row.map((cell) => `<td>${inlineMarkdown(cell)}</td>`).join("")}</tr>`)
+    .join("");
+  return `<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+
+function renderMarkdown(markdown) {
+  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+  const html = [];
+  let listType = null;
+  let quoteLines = [];
+  let paragraphLines = [];
+  let codeLines = [];
+  let inCode = false;
+
+  function closeList() {
+    if (!listType) return;
+    html.push(`</${listType}>`);
+    listType = null;
+  }
+
+  function closeQuote() {
+    if (!quoteLines.length) return;
+    html.push(`<blockquote><p>${inlineMarkdown(quoteLines.join(" "))}</p></blockquote>`);
+    quoteLines = [];
+  }
+
+  function closeParagraph() {
+    if (!paragraphLines.length) return;
+    html.push(`<p>${inlineMarkdown(paragraphLines.join(" "))}</p>`);
+    paragraphLines = [];
+  }
+
+  function closeLooseBlocks() {
+    closeParagraph();
+    closeList();
+    closeQuote();
+  }
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const rawLine = lines[index];
+    const line = rawLine.trim();
+
+    if (line.startsWith("```")) {
+      if (inCode) {
+        html.push(`<pre><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`);
+        codeLines = [];
+        inCode = false;
+      } else {
+        closeLooseBlocks();
+        inCode = true;
+      }
+      continue;
+    }
+
+    if (inCode) {
+      codeLines.push(rawLine);
+      continue;
+    }
+
+    if (!line) {
+      closeLooseBlocks();
+      continue;
+    }
+
+    if (/^(-{3,}|\*{3,}|_{3,})$/.test(line)) {
+      closeLooseBlocks();
+      html.push("<hr>");
+      continue;
+    }
+
+    if (line.includes("|") && lines[index + 1] && isTableSeparator(lines[index + 1])) {
+      closeLooseBlocks();
+      const headers = splitTableRow(line);
+      const rows = [];
+      index += 2;
+      while (index < lines.length && lines[index].trim().includes("|")) {
+        rows.push(splitTableRow(lines[index]));
+        index += 1;
+      }
+      index -= 1;
+      html.push(renderTable(headers, rows));
+      continue;
+    }
+
+    if (line.startsWith(">")) {
+      closeParagraph();
+      closeList();
+      quoteLines.push(line.replace(/^>\s?/, ""));
+      continue;
+    }
+
+    closeQuote();
+
+    if (line.startsWith("### ")) {
+      closeParagraph();
+      closeList();
+      html.push(`<h3>${inlineMarkdown(line.slice(4))}</h3>`);
+      continue;
+    }
+
+    if (line.startsWith("## ")) {
+      closeParagraph();
+      closeList();
+      html.push(`<h2>${inlineMarkdown(line.slice(3))}</h2>`);
+      continue;
+    }
+
+    if (line.startsWith("# ")) {
+      closeParagraph();
+      closeList();
+      html.push(`<h1>${inlineMarkdown(line.slice(2))}</h1>`);
+      continue;
+    }
+
+    const ordered = line.match(/^\d+\.\s+(.+)/);
+    if (ordered) {
+      closeParagraph();
+      if (listType !== "ol") {
+        closeList();
+        html.push("<ol>");
+        listType = "ol";
+      }
+      html.push(`<li>${inlineMarkdown(ordered[1])}</li>`);
+      continue;
+    }
+
+    const unordered = line.match(/^[-*]\s+(.+)/);
+    if (unordered) {
+      closeParagraph();
+      if (listType !== "ul") {
+        closeList();
+        html.push("<ul>");
+        listType = "ul";
+      }
+      html.push(`<li>${inlineMarkdown(unordered[1])}</li>`);
+      continue;
+    }
+
+    closeList();
+    paragraphLines.push(line);
+  }
+
+  if (inCode) html.push(`<pre><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`);
+  closeLooseBlocks();
+  return html.join("");
 }
 
 const contactIcons = {
@@ -333,92 +542,6 @@ function renderAboutProfile() {
       `;
     })
     .join("");
-}
-
-function renderMarkdown(markdown) {
-  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
-  const html = [];
-  let listType = null;
-  let quoteLines = [];
-
-  function closeList() {
-    if (listType) {
-      html.push(`</${listType}>`);
-      listType = null;
-    }
-  }
-
-  function closeQuote() {
-    if (quoteLines.length) {
-      html.push(`<blockquote><p>${inlineMarkdown(quoteLines.join(" "))}</p></blockquote>`);
-      quoteLines = [];
-    }
-  }
-
-  for (const rawLine of lines) {
-    const line = rawLine.trim();
-
-    if (!line) {
-      closeList();
-      closeQuote();
-      continue;
-    }
-
-    if (line.startsWith(">")) {
-      closeList();
-      quoteLines.push(line.replace(/^>\s?/, ""));
-      continue;
-    }
-
-    closeQuote();
-
-    if (line.startsWith("### ")) {
-      closeList();
-      html.push(`<h3>${inlineMarkdown(line.slice(4))}</h3>`);
-      continue;
-    }
-
-    if (line.startsWith("## ")) {
-      closeList();
-      html.push(`<h2>${inlineMarkdown(line.slice(3))}</h2>`);
-      continue;
-    }
-
-    if (line.startsWith("# ")) {
-      closeList();
-      html.push(`<h1>${inlineMarkdown(line.slice(2))}</h1>`);
-      continue;
-    }
-
-    const ordered = line.match(/^\d+\.\s+(.+)/);
-    if (ordered) {
-      if (listType !== "ol") {
-        closeList();
-        html.push("<ol>");
-        listType = "ol";
-      }
-      html.push(`<li>${inlineMarkdown(ordered[1])}</li>`);
-      continue;
-    }
-
-    const unordered = line.match(/^[-*]\s+(.+)/);
-    if (unordered) {
-      if (listType !== "ul") {
-        closeList();
-        html.push("<ul>");
-        listType = "ul";
-      }
-      html.push(`<li>${inlineMarkdown(unordered[1])}</li>`);
-      continue;
-    }
-
-    closeList();
-    html.push(`<p>${inlineMarkdown(line)}</p>`);
-  }
-
-  closeList();
-  closeQuote();
-  return html.join("");
 }
 
 async function loadMarkdown(file, target, status) {
@@ -578,14 +701,78 @@ function clearProgress() {
   refreshProgressUi();
 }
 
+function getInterviewTags() {
+  return ["all", ...new Set(interviewQuestions.flatMap((question) => question.tags))].sort((a, b) => a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b));
+}
+
+function getFilteredQuestions() {
+  if (state.selectedTag === "all") return interviewQuestions;
+  return interviewQuestions.filter((question) => question.tags.includes(state.selectedTag));
+}
+
+function renderInterviewFilters() {
+  tagFilterList.innerHTML = getInterviewTags()
+    .map((tag) => `
+      <button class="tag-filter ${tag === state.selectedTag ? "is-active" : ""}" data-tag="${tag}" type="button">
+        ${tag === "all" ? "All" : tag}
+      </button>
+    `)
+    .join("");
+}
+
+function renderQuestionList() {
+  const filtered = getFilteredQuestions();
+  questionCount.textContent = `${filtered.length} questions`;
+  if (!filtered.some((question) => question.id === state.selectedQuestionId)) {
+    state.selectedQuestionId = (filtered[0] && filtered[0].id) || interviewQuestions[0].id;
+  }
+
+  questionList.innerHTML = filtered
+    .map((question) => `
+      <button class="question-button ${question.id === state.selectedQuestionId ? "is-active" : ""}" data-question-id="${question.id}" type="button">
+        <span class="question-title">${escapeHtml(question.title)}</span>
+        <span class="question-tags">${question.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</span>
+      </button>
+    `)
+    .join("");
+}
+
+function getSelectedQuestion() {
+  return interviewQuestions.find((question) => question.id === state.selectedQuestionId) || interviewQuestions[0];
+}
+
+function selectQuestion(id) {
+  state.selectedQuestionId = id;
+  const question = getSelectedQuestion();
+  activeQuestionTitle.textContent = question.title;
+  activeQuestionTags.textContent = question.tags.join(" • ");
+  interviewComment.value = state.interviewComments[question.id] || "";
+  interviewCommentSaved.textContent = interviewComment.value ? "Saved locally in this browser" : "No comment yet";
+  renderQuestionList();
+  loadMarkdown(question.file, interviewContent, interviewStatus);
+}
+
+function saveQuestionComment() {
+  const question = getSelectedQuestion();
+  state.interviewComments[question.id] = interviewComment.value.trim();
+  saveInterviewComments();
+  interviewCommentSaved.textContent = state.interviewComments[question.id] ? "Saved locally in this browser" : "No comment yet";
+}
+
+function initializeInterviews() {
+  renderInterviewFilters();
+  renderQuestionList();
+  selectQuestion(state.selectedQuestionId);
+}
+
 function setRoute(route) {
   const routeChanged = state.route !== route;
   state.route = route;
-  const isAbout = route === "about";
-  courseView.hidden = isAbout;
-  aboutView.hidden = !isAbout;
+  courseView.hidden = route !== "course";
+  interviewView.hidden = route !== "interviews";
+  aboutView.hidden = route !== "about";
   tabs.forEach((tab) => tab.classList.toggle("is-active", tab.dataset.route === route));
-  if (isAbout && !aboutContent.innerHTML) {
+  if (route === "about" && !aboutContent.innerHTML) {
     loadMarkdown(aboutFile, aboutContent, aboutStatus);
   }
   if (routeChanged) {
@@ -593,6 +780,7 @@ function setRoute(route) {
   }
 }
 
+themeToggle.addEventListener("click", toggleTheme);
 prevDay.addEventListener("click", () => selectDay(state.selectedIndex - 1));
 nextDay.addEventListener("click", () => selectDay(state.selectedIndex + 1));
 tabs.forEach((tab) => tab.addEventListener("click", () => setRoute(tab.dataset.route)));
@@ -606,8 +794,24 @@ contactGrid.addEventListener("click", (event) => {
   const emptyLink = event.target.closest(".contact-link.is-empty");
   if (emptyLink) event.preventDefault();
 });
+tagFilterList.addEventListener("click", (event) => {
+  const button = event.target.closest(".tag-filter");
+  if (!button) return;
+  state.selectedTag = button.dataset.tag;
+  renderInterviewFilters();
+  renderQuestionList();
+  selectQuestion(state.selectedQuestionId);
+});
+questionList.addEventListener("click", (event) => {
+  const button = event.target.closest(".question-button");
+  if (!button) return;
+  selectQuestion(button.dataset.questionId);
+});
+interviewComment.addEventListener("input", saveQuestionComment);
 
+applyTheme();
 renderAboutProfile();
 renderDayList();
+initializeInterviews();
 selectDay(Number.isNaN(state.selectedIndex) ? 0 : state.selectedIndex);
 setRoute("course");
