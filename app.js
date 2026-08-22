@@ -178,6 +178,66 @@ const course = [
     title: "Product Discovery",
     duration: "70 min",
     file: "content/days/day-30.md"
+  },
+  {
+    day: 31,
+    title: "User Research & Customer Interviews",
+    duration: "75 min",
+    file: "content/days/day-31.md"
+  },
+  {
+    day: 32,
+    title: "Jobs-to-be-Done",
+    duration: "65 min",
+    file: "content/days/day-32.md"
+  },
+  {
+    day: 33,
+    title: "User Journey Mapping & Customer Experience",
+    duration: "70 min",
+    file: "content/days/day-33.md"
+  },
+  {
+    day: 34,
+    title: "Product Experimentation & Validation",
+    duration: "70 min",
+    file: "content/days/day-34.md"
+  },
+  {
+    day: 35,
+    title: "Product Requirements & Writing Effective PRDs",
+    duration: "80 min",
+    file: "content/days/day-35.md"
+  },
+  {
+    day: 36,
+    title: "Agile Product Management & Scrum",
+    duration: "55 min",
+    file: "content/days/day-36.md"
+  },
+  {
+    day: 37,
+    title: "Product Strategy & Vision",
+    duration: "80 min",
+    file: "content/days/day-37.md"
+  },
+  {
+    day: 38,
+    title: "Product Roadmapping & Prioritization",
+    duration: "65 min",
+    file: "content/days/day-38.md"
+  },
+  {
+    day: 39,
+    title: "Working Effectively with Engineering & Design",
+    duration: "60 min",
+    file: "content/days/day-39.md"
+  },
+  {
+    day: 40,
+    title: "Product Delivery & Execution",
+    duration: "70 min",
+    file: "content/days/day-40.md"
   }
 ];
 
