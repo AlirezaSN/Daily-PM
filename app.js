@@ -238,6 +238,66 @@ const course = [
     title: "Product Delivery & Execution",
     duration: "70 min",
     file: "content/days/day-40.md"
+  },
+  {
+    day: 41,
+    title: "Product Leadership & Decision-Making",
+    duration: "60 min",
+    file: "content/days/day-41.md"
+  },
+  {
+    day: 42,
+    title: "Product Strategy & Competitive Analysis",
+    duration: "65 min",
+    file: "content/days/day-42.md"
+  },
+  {
+    day: 43,
+    title: "Product Growth & Growth Loops",
+    duration: "55 min",
+    file: "content/days/day-43.md"
+  },
+  {
+    day: 44,
+    title: "Product Monetization & Pricing",
+    duration: "70 min",
+    file: "content/days/day-44.md"
+  },
+  {
+    day: 45,
+    title: "Product-Led Growth & Growth Strategy",
+    duration: "75 min",
+    file: "content/days/day-45.md"
+  },
+  {
+    day: 46,
+    title: "Product Growth, Retention & Lifecycle Management",
+    duration: "60 min",
+    file: "content/days/day-46.md"
+  },
+  {
+    day: 47,
+    title: "Product Growth Loops, Virality & Network Effects",
+    duration: "65 min",
+    file: "content/days/day-47.md"
+  },
+  {
+    day: 48,
+    title: "Product Growth Strategy & Product-Led Growth",
+    duration: "65 min",
+    file: "content/days/day-48.md"
+  },
+  {
+    day: 49,
+    title: "Growth Experimentation & Optimization",
+    duration: "70 min",
+    file: "content/days/day-49.md"
+  },
+  {
+    day: 50,
+    title: "Go-to-Market (GTM) Strategy",
+    duration: "55 min",
+    file: "content/days/day-50.md"
   }
 ];
 
