@@ -298,6 +298,66 @@ const course = [
     title: "Go-to-Market (GTM) Strategy",
     duration: "55 min",
     file: "content/days/day-50.md"
+  },
+  {
+    day: 51,
+    title: "Product Launch Management",
+    duration: "60 min",
+    file: "content/days/day-51.md"
+  },
+  {
+    day: 52,
+    title: "Product Marketing & Positioning",
+    duration: "50 min",
+    file: "content/days/day-52.md"
+  },
+  {
+    day: 53,
+    title: "Product Operations & Product Management Systems",
+    duration: "40 min",
+    file: "content/days/day-53.md"
+  },
+  {
+    day: 54,
+    title: "Product Portfolio Management",
+    duration: "45 min",
+    file: "content/days/day-54.md"
+  },
+  {
+    day: 55,
+    title: "Platform & Ecosystem Product Management",
+    duration: "50 min",
+    file: "content/days/day-55.md"
+  },
+  {
+    day: 56,
+    title: "API & Developer Products / Technical Product Management",
+    duration: "40 min",
+    file: "content/days/day-56.md"
+  },
+  {
+    day: 57,
+    title: "B2B Product Management & Enterprise Products",
+    duration: "50 min",
+    file: "content/days/day-57.md"
+  },
+  {
+    day: 58,
+    title: "Marketplace Product Management",
+    duration: "50 min",
+    file: "content/days/day-58.md"
+  },
+  {
+    day: 59,
+    title: "Fintech Product Management & Regulated Products",
+    duration: "55 min",
+    file: "content/days/day-59.md"
+  },
+  {
+    day: 60,
+    title: "Product Security, Privacy & Risk Management",
+    duration: "45 min",
+    file: "content/days/day-60.md"
   }
 ];
 
