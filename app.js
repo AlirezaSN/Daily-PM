@@ -358,6 +358,66 @@ const course = [
     title: "Product Security, Privacy & Risk Management",
     duration: "45 min",
     file: "content/days/day-60.md"
+  },
+  {
+    day: 61,
+    title: "Internationalization & Global Product Management",
+    duration: "40 min",
+    file: "content/days/day-61.md"
+  },
+  {
+    day: 62,
+    title: "Localization & Cross-Cultural Product Design",
+    duration: "35 min",
+    file: "content/days/day-62.md"
+  },
+  {
+    day: 63,
+    title: "Global Product Expansion & Market Entry Strategy",
+    duration: "40 min",
+    file: "content/days/day-63.md"
+  },
+  {
+    day: 64,
+    title: "Global Product Operations & Scaling",
+    duration: "30 min",
+    file: "content/days/day-64.md"
+  },
+  {
+    day: 65,
+    title: "Product Economics & Unit Economics",
+    duration: "35 min",
+    file: "content/days/day-65.md"
+  },
+  {
+    day: 66,
+    title: "Financial Modeling for Product Managers",
+    duration: "35 min",
+    file: "content/days/day-66.md"
+  },
+  {
+    day: 67,
+    title: "Product ROI & Investment Decisions",
+    duration: "40 min",
+    file: "content/days/day-67.md"
+  },
+  {
+    day: 68,
+    title: "Product Lifecycle Management",
+    duration: "45 min",
+    file: "content/days/day-68.md"
+  },
+  {
+    day: 69,
+    title: "Product Portfolio Strategy & Resource Allocation",
+    duration: "40 min",
+    file: "content/days/day-69.md"
+  },
+  {
+    day: 70,
+    title: "Product Organization Design",
+    duration: "35 min",
+    file: "content/days/day-70.md"
   }
 ];
 
