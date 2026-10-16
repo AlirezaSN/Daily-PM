@@ -418,6 +418,186 @@ const course = [
     title: "Product Organization Design",
     duration: "35 min",
     file: "content/days/day-70.md"
+  },
+  {
+    day: 71,
+    title: "Product Operating Models & Product Cadence",
+    duration: "30 min",
+    file: "content/days/day-71.md"
+  },
+  {
+    day: 72,
+    title: "Product Team Design & Cross-Functional Collaboration",
+    duration: "40 min",
+    file: "content/days/day-72.md"
+  },
+  {
+    day: 73,
+    title: "Product Management at Scale",
+    duration: "35 min",
+    file: "content/days/day-73.md"
+  },
+  {
+    day: 74,
+    title: "Product Operations (Advanced)",
+    duration: "40 min",
+    file: "content/days/day-74.md"
+  },
+  {
+    day: 75,
+    title: "Product Leadership Fundamentals",
+    duration: "30 min",
+    file: "content/days/day-75.md"
+  },
+  {
+    day: 76,
+    title: "Influence Without Authority",
+    duration: "35 min",
+    file: "content/days/day-76.md"
+  },
+  {
+    day: 77,
+    title: "Difficult Product Conversations & Conflict Resolution",
+    duration: "45 min",
+    file: "content/days/day-77.md"
+  },
+  {
+    day: 78,
+    title: "Executive Communication & Product Storytelling",
+    duration: "35 min",
+    file: "content/days/day-78.md"
+  },
+  {
+    day: 79,
+    title: "Product Decision-Making Under Uncertainty",
+    duration: "30 min",
+    file: "content/days/day-79.md"
+  },
+  {
+    day: 80,
+    title: "Product Management Career & Professional Development",
+    duration: "30 min",
+    file: "content/days/day-80.md"
+  },
+  {
+    day: 81,
+    title: "Software Architecture for Product Managers",
+    duration: "35 min",
+    file: "content/days/day-81.md"
+  },
+  {
+    day: 82,
+    title: "Data & Analytics Architecture for Product Managers",
+    duration: "40 min",
+    file: "content/days/day-82.md"
+  },
+  {
+    day: 83,
+    title: "Technical Debt & Product Quality Management",
+    duration: "45 min",
+    file: "content/days/day-83.md"
+  },
+  {
+    day: 84,
+    title: "Product Reliability & Site Reliability Fundamentals",
+    duration: "35 min",
+    file: "content/days/day-84.md"
+  },
+  {
+    day: 85,
+    title: "APIs, Integrations & Technical Ecosystems",
+    duration: "30 min",
+    file: "content/days/day-85.md"
+  },
+  {
+    day: 86,
+    title: "Build vs Buy vs Partner Decisions",
+    duration: "40 min",
+    file: "content/days/day-86.md"
+  },
+  {
+    day: 87,
+    title: "AI Product Management Fundamentals",
+    duration: "45 min",
+    file: "content/days/day-87.md"
+  },
+  {
+    day: 88,
+    title: "Generative AI Product Design",
+    duration: "35 min",
+    file: "content/days/day-88.md"
+  },
+  {
+    day: 89,
+    title: "AI Product Discovery & Evaluation",
+    duration: "30 min",
+    file: "content/days/day-89.md"
+  },
+  {
+    day: 90,
+    title: "AI Product Metrics & Experimentation",
+    duration: "35 min",
+    file: "content/days/day-90.md"
+  },
+  {
+    day: 91,
+    title: "Responsible AI & AI Product Risk",
+    duration: "45 min",
+    file: "content/days/day-91.md"
+  },
+  {
+    day: 92,
+    title: "AI Product Economics & Infrastructure",
+    duration: "40 min",
+    file: "content/days/day-92.md"
+  },
+  {
+    day: 93,
+    title: "Product Strategy Under Uncertainty",
+    duration: "30 min",
+    file: "content/days/day-93.md"
+  },
+  {
+    day: 94,
+    title: "Competitive Intelligence & Market Dynamics",
+    duration: "35 min",
+    file: "content/days/day-94.md"
+  },
+  {
+    day: 95,
+    title: "Product Moats & Sustainable Competitive Advantage",
+    duration: "35 min",
+    file: "content/days/day-95.md"
+  },
+  {
+    day: 96,
+    title: "Product Innovation & Emerging Technologies",
+    duration: "45 min",
+    file: "content/days/day-96.md"
+  },
+  {
+    day: 97,
+    title: "Product Crisis Management & Incident Response",
+    duration: "40 min",
+    file: "content/days/day-97.md"
+  },
+  {
+    day: 98,
+    title: "Product Ethics & Responsible Product Management",
+    duration: "30 min",
+    file: "content/days/day-98.md"
+  },
+  {
+    day: 99,
+    title: "End-to-End Product Management Case Study",
+    duration: "45 min",
+    file: "content/days/day-99.md"
+  },
+  {
+    day: 100,
+    title: "Product Management Masterclass: From Problem to Scalable Product",
+    duration: "50 min",
+    file: "content/days/day-100.md"
   }
 ];
 
