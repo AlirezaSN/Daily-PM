@@ -624,14 +624,12 @@ const progressKey = "pm-course-progress";
 const themeKey = "pm-course-theme";
 const interviewCommentKey = "pm-interview-comments";
 const interviewQuestions = [
-  { id: "q1", title: "Tell me about a product you improved", tags: ["behavioral", "execution"], file: "content/interviews/question-1.md" },
-  { id: "q2", title: "How do you prioritize features?", tags: ["prioritization", "strategy"], file: "content/interviews/question-2.md" },
-  { id: "q3", title: "Explain an API to a non-technical stakeholder", tags: ["technical", "communication"], file: "content/interviews/question-3.md" },
-  { id: "q4", title: "How would you improve activation for a fintech app?", tags: ["analytics", "product-sense"], file: "content/interviews/question-4.md" },
-  { id: "q5", title: "Tell me about a conflict with engineering or design", tags: ["behavioral", "stakeholder"], file: "content/interviews/question-5.md" },
-  { id: "q6", title: "What metrics would you track after launching a feature?", tags: ["analytics", "execution"], file: "content/interviews/question-6.md" },
-  { id: "q7", title: "How would you decide whether to build, buy, or partner?", tags: ["strategy", "technical"], file: "content/interviews/question-7.md" },
-  { id: "q8", title: "Design a product for freelancers to manage invoices", tags: ["product-sense", "design"], file: "content/interviews/question-8.md" }
+  { id: "q1", title: "How Would You Design a BNPL Product?", tags: ["Product Management", "Product Sense", "Product Manager Interview", "Fintech", "BNPL", "Buy Now Pay Later", "Credit Products", "Digital Payments", "Risk Management", "Product Strategy"], file: "content/interviews/question-1.md" },
+  { id: "q2", title: "How Would You Improve DigiPay's Payment Success Rate?", tags: ["Product Management", "Product Sense", "Product Manager Interview", "Fintech", "Digital Payments", "Payment Gateway", "Payment Processing", "Transaction Management", "Idempotency", "Reconciliation", "Product Reliability"], file: "content/interviews/question-2.md" },
+  { id: "q3", title: "How Would You Improve the User Experience of an Airport?", tags: ["Product Management", "Product Sense", "Product Manager Interview", "Product Design", "Problem Solving", "Customer Experience", "User Journey", "Product Discovery", "Product Strategy", "Prioritization"], file: "content/interviews/question-3.md" },
+  { id: "q4", title: "How Would You Increase the Number of Successful Transactions on an Online Marketplace?", tags: ["Product Management", "Product Sense", "Product Manager Interview", "Marketplace", "E-commerce", "Growth Strategy", "Product Analytics", "Conversion Optimization", "User Experience", "Product Discovery", "Marketplace Liquidity"], file: "content/interviews/question-4.md" },
+  { id: "q5", title: "How Would You Design a Product to Help People Reduce Food Waste at Home?", tags: ["Product Management", "Product Sense", "Product Manager Interview", "Consumer Products", "Sustainability", "Behavior Change", "Product Discovery", "User Research", "MVP", "Product Metrics", "Customer Experience"], file: "content/interviews/question-5.md" },
+  { id: "q6", title: "How Would You Improve User Retention in a Language-Learning App?", tags: ["Product Management", "Product Sense", "Product Manager Interview", "User Retention", "Growth Strategy", "Cohort Analysis", "A/B Testing", "Product Analytics", "Customer Engagement", "Personalization", "EdTech", "Learning Experience", "Product Metrics"], file: "content/interviews/question-6.md" }
 ];
 
 const state = {
